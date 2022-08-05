@@ -1,13 +1,18 @@
-list_of_inputs = [int(input('Абонентская плата: ')), int(input('Размер трафика в тарифе (в Мб): ')),
-                  int(input('Стоимость доп. мегабайта: ')), int(input('Запланированный трафик (в Мб): '))]
+from functools import reduce
+
+list_of_inputs = [input('Абонентская плата: '), input('Размер трафика в тарифе (в Мб): '),
+                  input('Стоимость доп. мегабайта: '), input('Запланированный трафик (в Мб): ')]
 
 
-def rate_calc(loi):
-    if loi[3] >= loi[1]:
-        result_rate = loi[0] + loi[2] * (loi[3] - loi[1])
+def rate_calc(input_list):
+    int_list = list(map(lambda i: int(i), input_list))
+    if int_list[3] > int_list[1]:
+        overrate = reduce(lambda d, b: int_list[3] - int_list[1], int_list)
+        overrate_price = reduce(lambda x, c: overrate * int_list[2], int_list)
+        result_rate = reduce(lambda a, y: overrate_price + int_list[0], int_list)
+        return result_rate
     else:
-        result_rate = loi[0]
-    return result_rate
+        return int_list[0]
 
 
 print(rate_calc(list_of_inputs))
