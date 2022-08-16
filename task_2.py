@@ -1,4 +1,4 @@
-incisions = int(input('Введите кол-во частей рулета: '))
+incisions = int(input())
 
 
 def roll(inc):

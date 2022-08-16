@@ -1,7 +1,6 @@
 from functools import reduce
 
-list_of_inputs = [input('Абонентская плата: '), input('Размер трафика в тарифе (в Мб): '),
-                  input('Стоимость доп. мегабайта: '), input('Запланированный трафик (в Мб): ')]
+list_of_inputs = input().split(' ')
 
 
 def rate_calc(input_list):
